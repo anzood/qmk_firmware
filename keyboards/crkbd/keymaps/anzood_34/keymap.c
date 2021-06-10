@@ -89,6 +89,7 @@ enum layers {
     NUM,
     FN,
     RSTL,
+    NAV_L,
 };
 
 enum keycodes {
@@ -124,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [NAV] = LAYOUT_split_3x6_3(
-    KC_NO, KC_APP,  KC_PGUP, SW_WIN,  KC_HOME, KC_PSCR,                         KC_NO,   TABL,    SW_WIN,    TABR,   KC_NO,  KC_NO,
+    KC_NO, KC_APP,  KC_PGUP, SW_WIN,  KC_HOME, KC_PSCR,                         KC_NO,   TABL,    SW_WIN,    TABR,   TG(NAV_L),  KC_NO,
     KC_NO, KC_INS,  KC_LEFT, KC_UP,   KC_RGHT, SW_LANG,                         SW_LANG, OS_CTRL, OS_ALT,    OS_SHFT,OS_CMD, KC_NO,
     KC_NO, KC_DEL,  KC_PGDN, KC_DOWN, KC_END,  KC_ENT,                          KC_NO,   PGL,     KC_LALT,   PGR,    KC_LGUI,KC_NO,
                                       KC_NO,   KC_BSPC,  TAB_NUM,      _______, MO(RSTL),KC_NO
@@ -149,6 +150,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,
     KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,
                                           KC_NO, _______,  _______,     _______, _______, KC_NO
+  ),
+
+  [NAV_L] = LAYOUT_split_3x6_3(
+    KC_NO, KC_APP,  KC_PGUP, SW_WIN,  KC_HOME, KC_PSCR,                         KC_NO,   TABL,    SW_WIN,    TABR,   TG(NAV_L),  KC_NO,
+    KC_NO, KC_INS,  KC_LEFT, KC_UP,   KC_RGHT, SW_LANG,                         SW_LANG, KC_RCTL, KC_RALT,   KC_RSFT,KC_RGUI, KC_NO,
+    KC_NO, KC_DEL,  KC_PGDN, KC_DOWN, KC_END,  KC_ENT,                          KC_NO,   PGL,     KC_LALT,   PGR,    KC_LGUI,KC_NO,
+                                      KC_NO,   KC_BSPC,  TAB_NUM,      KC_ENT, KC_SPC, KC_NO
   )
 };
 
