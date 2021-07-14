@@ -80,6 +80,8 @@ combo_t key_combos[COMBO_COUNT] = {
 #define TABR C(KC_TAB)
 #define PGL C(KC_PGUP)
 #define PGR C(KC_PGDN)
+#define RUL A(S(KC_6))
+#define ENL A(S(KC_8))
 
 
 enum layers {
@@ -90,6 +92,7 @@ enum layers {
     FN,
     RSTL,
     NAV_L,
+    FN_L,
 };
 
 enum keycodes {
@@ -125,9 +128,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [NAV] = LAYOUT_split_3x6_3(
-    KC_NO, KC_APP,  KC_PGUP, SW_WIN,  KC_HOME, KC_PSCR,                         KC_NO,   TABL,    SW_WIN,    TABR,   TG(NAV_L),  KC_NO,
-    KC_NO, KC_INS,  KC_LEFT, KC_UP,   KC_RGHT, SW_LANG,                         SW_LANG, OS_CTRL, OS_ALT,    OS_SHFT,OS_CMD, KC_NO,
-    KC_NO, KC_DEL,  KC_PGDN, KC_DOWN, KC_END,  KC_ENT,                          KC_NO,   PGL,     KC_LALT,   PGR,    KC_LGUI,KC_NO,
+    KC_NO, KC_APP,  KC_PGUP, SW_WIN,  KC_HOME, KC_PSCR,                         SW_LANG,   TABL,    SW_WIN,    TABR,   TG(NAV_L),  KC_NO,
+    KC_NO, KC_INS,  KC_LEFT, KC_UP,   KC_RGHT, ENL,                             RUL,       OS_CTRL, OS_ALT,    OS_SHFT,OS_CMD, KC_NO,
+    KC_NO, KC_DEL,  KC_PGDN, KC_DOWN, KC_END,  KC_ENT,                          ENL,   PGL,     KC_LALT,   PGR,    KC_LGUI,KC_NO,
                                       KC_NO,   KC_BSPC,  TAB_NUM,      _______, MO(RSTL),KC_NO
   ),
 
@@ -139,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [FN] = LAYOUT_split_3x6_3(
-    KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                           KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F4,  KC_NO,
+    KC_NO, TG(FN_L),KC_NO,   KC_NO,   KC_NO,   KC_NO,                           KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F4,  KC_NO,
     KC_NO, OS_CMD,  OS_SHFT, OS_ALT,  OS_CTRL, KC_NO,                           KC_NO,   KC_F5,   KC_F6,   KC_F7,   KC_F8,  KC_NO,
     KC_NO, KC_CAPS, KC_SLCK, KC_NLCK, KC_PAUS, KC_NO,                           KC_NO,   KC_F9,   KC_F10,  KC_F11,  KC_F12, KC_NO,
                                       KC_NO,   _______,  _______,      _______,  _______, KC_NO
@@ -153,10 +156,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [NAV_L] = LAYOUT_split_3x6_3(
-    KC_NO, KC_APP,  KC_PGUP, SW_WIN,  KC_HOME, KC_PSCR,                         KC_NO,   TABL,    SW_WIN,    TABR,   TG(NAV_L),  KC_NO,
-    KC_NO, KC_INS,  KC_LEFT, KC_UP,   KC_RGHT, SW_LANG,                         SW_LANG, KC_RCTL, KC_RALT,   KC_RSFT,KC_RGUI, KC_NO,
-    KC_NO, KC_DEL,  KC_PGDN, KC_DOWN, KC_END,  KC_ENT,                          KC_NO,   PGL,     KC_LALT,   PGR,    KC_LGUI,KC_NO,
+    KC_NO, KC_APP,  KC_PGUP, KC_ESC,  KC_HOME, KC_PSCR,                         RUL,     TABL,    KC_ESC,    TABR,   TG(NAV_L),  KC_NO,
+    KC_NO, KC_INS,  KC_LEFT, KC_UP,   KC_RGHT, ENL,                             RUL,     KC_RCTL, KC_RALT,   KC_RSFT,KC_RGUI, KC_NO,
+    KC_NO, KC_DEL,  KC_PGDN, KC_DOWN, KC_END,  KC_ENT,                          ENL,     PGL,     KC_LALT,   PGR,    KC_LGUI,KC_NO,
                                       KC_NO,   KC_BSPC,  TAB_NUM,      KC_ENT, KC_SPC, KC_NO
+  ),
+
+  [FN_L] = LAYOUT_split_3x6_3(
+    KC_NO, TG(FN_L),KC_NO,   KC_NO,   KC_NO,   KC_NO,                           KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F4,  KC_NO,
+    KC_NO, KC_LGUI, KC_LSFT, KC_LALT, KC_LCTL, KC_NO,                           KC_NO,   KC_F5,   KC_F6,   KC_F7,   KC_F8,  KC_NO,
+    KC_NO, KC_CAPS, KC_SLCK, KC_NLCK, KC_PAUS, KC_NO,                           KC_NO,   KC_F9,   KC_F10,  KC_F11,  KC_F12, KC_NO,
+                                      KC_NO,   _______,  _______,      _______,  _______, KC_NO
   )
 };
 
